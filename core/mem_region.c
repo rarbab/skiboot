@@ -146,6 +146,10 @@ static void mem_poison(struct free_hdr *f)
 {
 	size_t poison_size = (void*)tailer(f) - (void*)(f+1);
 
+	/* This can cause a really long boot time in simulators */
+	if (chip_quirk(QUIRK_SLOW_SIM))
+		return;
+
 	/* We only poison up to a limit, as otherwise boot is
 	 * kinda slow */
 	if (poison_size > POISON_MEM_REGION_LIMIT)
