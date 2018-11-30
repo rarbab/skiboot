@@ -184,6 +184,10 @@ int64_t opal_exit_check(int64_t retval, struct stack_frame *eframe)
 		}
 	}
 
+	/* Don't flood the logs with these */
+	if (chip_quirk(QUIRK_SLOW_SIM))
+		return retval;
+
 	if (call_time > 100 && token != OPAL_RESYNC_TIMEBASE) {
 		prlog((call_time < 1000) ? PR_DEBUG : PR_WARNING,
 		      "Spent %llu msecs in OPAL call %llu!\n",
