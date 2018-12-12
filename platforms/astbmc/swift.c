@@ -13,7 +13,7 @@
 #define NVIDIA_LINK_SPEED_25781250000_BPS 8
 #define NVIDIA_LINK_SPEED_25000000000_BPS 9
 
-static void swift_npu3_device_detect(struct npu3 *npu)
+void swift_npu3_device_detect(struct npu3 *npu)
 {
 	struct npu3_dev *dev;
 	uint32_t node, gpu_index;

@@ -177,4 +177,7 @@ int64_t npu3_map_lpar(struct phb *phb, uint64_t bdf, uint64_t lparid,
 int64_t npu3_set_relaxed_order(struct phb *phb, uint32_t gcid, int pec,
 			       bool enable);
 
+/* FIXME: Development hack */
+void swift_npu3_device_detect(struct npu3 *npu);
+
 #endif /* __NPU3_H */
