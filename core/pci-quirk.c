@@ -13,6 +13,7 @@
 #include <pci-quirk.h>
 #include <platform.h>
 #include <ast.h>
+#include <chip.h>
 
 static int64_t cfg_block_filter(void *dev __unused,
 				struct pci_cfg_reg_filter *pcrf __unused,
@@ -109,11 +110,24 @@ static void quirk_astbmc_vga(struct phb *phb __unused,
 	dt_add_property_cells(np, "aspeed,mcr-scu-strap", mcr_scu_strap);
 }
 
+/* Give our simulated GPU a slot label so it can be associated to its links */
+static void quirk_simics_gpu(struct phb *phb __unused, struct pci_device *pd)
+{
+	static bool done = false;
+
+	if (!chip_quirk(QUIRK_SIMICS) || done)
+		return;
+
+	dt_add_property_string(pd->dn, "ibm,loc-code", "GPU1");
+	done = true;
+}
+
 /* Quirks are: {fixup function, vendor ID, (device ID or PCI_ANY_ID)} */
 static const struct pci_quirk quirk_table[] = {
 	/* ASPEED 2400 VGA device */
 	{ 0x1a03, 0x2000, &quirk_astbmc_vga },
 	{ 0x11f8, 0x4052, &quirk_microsemi_gen4_sw },
+	{ 0x10de, PCI_ANY_ID, &quirk_simics_gpu },
 	{ 0, 0, NULL }
 };
 
