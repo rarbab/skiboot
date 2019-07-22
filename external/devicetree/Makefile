@@ -3,7 +3,7 @@
 # Copyright 2019 IBM Corp.
 
 DTC=dtc
-OUT=p9-simics.dtb
+OUT=p9-simics.dtb p9-awan.dtb
 
 all: $(OUT)
 

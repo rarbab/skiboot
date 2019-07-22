@@ -1,0 +1,190 @@
+
+/dts-v1/;
+
+/ {
+	name = "";
+	compatible = "ibm,powernv";
+	model = "BML";
+	#size-cells = <2>;
+	#address-cells = <2>;
+	reserved-names = "1st-initrd-reserve";
+	reserved-ranges = < 0x0 0x28200000 0x0 0x9b3474 >;
+	chosen {
+		linux,pci-assign-all-buses = <0x1>;
+		linux,pci-probe-only = <0x0>;
+		linux,platform = <0x100>;
+		name = "chosen";
+		ibm,architecture-vec-5 = <0x0 0x00800000>;
+		linux,initrd-start = < 0x0 0x28200000 >;
+		linux,initrd-end = < 0x0 0x28bb3474 >;
+	};
+
+	memory@0 {
+		ibm,interleave-mask = < 0x80 0x10000 0x0 >;
+		reg = < 0x0 0x0 0x10 0x00000000 >;
+		ibm,chip-id = < 0x0 >;
+		device_type = "memory";
+		name = "memory";
+	};
+
+	cpus {
+		#size-cells = <0>;
+		#address-cells = <1>;
+		name = "cpus";
+
+		PowerPC,POWER9@38 {
+			name = "PowerPC,POWER9";
+			device_type = "cpu";
+			status = "okay";
+			ibm,chip-id = < 0x0 >;
+			ibm,pir = < 0x38 >;
+			timebase-frequency = < 512000000 >;
+			clock-frequency = < 2700000000 >;
+			ibm,segment-page-sizes = < 0xc 0x0 0x1 0xc 0x0 0x10 0x110 0x1 0x10 0x1 0x14 0x111 0x1 0x14 0x2 0x18 0x100 0x1 0x18 0x0 0x22 0x120 0x1 0x22 0x3  >;
+			ibm,processor-segment-sizes = < 0x0000001c 0x28 0xffffffff 0xffffffff >;
+			ibm,vmx = < 0x2 >;
+			i-cache-size = < 0x8000 >;
+			d-cache-size = < 0x8000 >;
+			i-cache-line-size = < 0x80 >;
+			d-cache-line-size = < 0x80 >;
+			ibm,slb-size = < 0x20 >;
+			reg = < 0x38 >;
+			ibm,ppc-interrupt-server#s = < 0x38  >;
+			ibm,pa-features = < 0x4000f63f 0xc7c080d0 0x80000000 0x00000000 0x00008000 0x80008000 0x00008000 0x80008000 0x00008000 0x80000000 0x80008000 0x80008000 0x80008000 0x80008000 0x80008000 0x80000000 0x80000000 0x00000000  >;
+			ibm,processor-radix-AP-encodings = < 0x0000000c 0xa0000010 0x20000015 0x4000001e >;
+			ibm,dfp = <0x2>;
+		};
+
+		PowerPC,POWER9@3c {
+			name = "PowerPC,POWER9";
+			device_type = "cpu";
+			status = "okay";
+			ibm,chip-id = < 0x0 >;
+			ibm,pir = < 0x3c >;
+			timebase-frequency = < 512000000 >;
+			clock-frequency = < 2700000000 >;
+			ibm,segment-page-sizes = < 0xc 0x0 0x1 0xc 0x0 0x10 0x110 0x1 0x10 0x1 0x14 0x111 0x1 0x14 0x2 0x18 0x100 0x1 0x18 0x0 0x22 0x120 0x1 0x22 0x3  >;
+			ibm,processor-segment-sizes = < 0x0000001c 0x28 0xffffffff 0xffffffff >;
+			ibm,vmx = < 0x2 >;
+			i-cache-size = < 0x8000 >;
+			d-cache-size = < 0x8000 >;
+			i-cache-line-size = < 0x80 >;
+			d-cache-line-size = < 0x80 >;
+			ibm,slb-size = < 0x20 >;
+			reg = < 0x3c >;
+			ibm,ppc-interrupt-server#s = < 0x3c  >;
+			ibm,pa-features = < 0x4000f63f 0xc7c080d0 0x80000000 0x00000000 0x00008000 0x80008000 0x00008000 0x80008000 0x00008000 0x80000000 0x80008000 0x80008000 0x80008000 0x80008000 0x80008000 0x80000000 0x80000000 0x00000000  >;
+			ibm,processor-radix-AP-encodings = < 0x0000000c 0xa0000010 0x20000015 0x4000001e >;
+			ibm,dfp = <0x2>;
+		};
+
+		PowerPC,POWER9@138 {
+			name = "PowerPC,POWER9";
+			device_type = "cpu";
+			status = "okay";
+			ibm,chip-id = < 0x1 >;
+			ibm,pir = < 0x138 >;
+			timebase-frequency = < 512000000 >;
+			clock-frequency = < 2700000000 >;
+			ibm,segment-page-sizes = < 0xc 0x0 0x1 0xc 0x0 0x10 0x110 0x1 0x10 0x1 0x14 0x111 0x1 0x14 0x2 0x18 0x100 0x1 0x18 0x0 0x22 0x120 0x1 0x22 0x3  >;
+			ibm,processor-segment-sizes = < 0x0000001c 0x28 0xffffffff 0xffffffff >;
+			ibm,vmx = < 0x2 >;
+			i-cache-size = < 0x8000 >;
+			d-cache-size = < 0x8000 >;
+			i-cache-line-size = < 0x80 >;
+			d-cache-line-size = < 0x80 >;
+			ibm,slb-size = < 0x20 >;
+			reg = < 0x138 >;
+			ibm,ppc-interrupt-server#s = < 0x138  >;
+			ibm,pa-features = < 0x4000f63f 0xc7c080d0 0x80000000 0x00000000 0x00008000 0x80008000 0x00008000 0x80008000 0x00008000 0x80000000 0x80008000 0x80008000 0x80008000 0x80008000 0x80008000 0x80000000 0x80000000 0x00000000  >;
+			ibm,processor-radix-AP-encodings = < 0x0000000c 0xa0000010 0x20000015 0x4000001e >;
+			ibm,dfp = <0x2>;
+		};
+
+		PowerPC,POWER9@13c {
+			name = "PowerPC,POWER9";
+			device_type = "cpu";
+			status = "okay";
+			ibm,chip-id = < 0x1 >;
+			ibm,pir = < 0x13c >;
+			timebase-frequency = < 512000000 >;
+			clock-frequency = < 2700000000 >;
+			ibm,segment-page-sizes = < 0xc 0x0 0x1 0xc 0x0 0x10 0x110 0x1 0x10 0x1 0x14 0x111 0x1 0x14 0x2 0x18 0x100 0x1 0x18 0x0 0x22 0x120 0x1 0x22 0x3  >;
+			ibm,processor-segment-sizes = < 0x0000001c 0x28 0xffffffff 0xffffffff >;
+			ibm,vmx = < 0x2 >;
+			i-cache-size = < 0x8000 >;
+			d-cache-size = < 0x8000 >;
+			i-cache-line-size = < 0x80 >;
+			d-cache-line-size = < 0x80 >;
+			ibm,slb-size = < 0x20 >;
+			reg = < 0x13c >;
+			ibm,ppc-interrupt-server#s = < 0x13c  >;
+			ibm,pa-features = < 0x4000f63f 0xc7c080d0 0x80000000 0x00000000 0x00008000 0x80008000 0x00008000 0x80008000 0x00008000 0x80000000 0x80008000 0x80008000 0x80008000 0x80008000 0x80008000 0x80000000 0x80000000 0x00000000  >;
+			ibm,processor-radix-AP-encodings = < 0x0000000c 0xa0000010 0x20000015 0x4000001e >;
+			ibm,dfp = <0x2>;
+		};
+
+	};
+
+	xscom@603fc00000000 {
+		compatible = "ibm,xscom", "ibm,power9-xscom";
+		ibm,chip-id = < 0x0 >;
+		#size-cells = < 1 >;
+		#address-cells = < 1 >;
+		reg = < 0x603fc 0x00000000 0x8 0x0 >;
+
+		psihb@5012900 {
+			reg = <0x5012900 0x100>;
+			compatible = "ibm,power9-psihb-x", "ibm,psihb-x";
+		};
+
+		xive@5013400 {
+			reg = <0x5013000 0x300>;
+			compatible = "ibm,power9-xive-x";
+		};
+
+		nx@2010000 {
+			reg = <0x2010000 0x4000>;
+			compatible = "ibm,power9-nx";
+		};
+
+		chiptod@40000 {
+			primary;
+			reg = <0x40000 0x34>;
+			compatible = "ibm,power-chiptod", "ibm,power9-chiptod";
+		};
+	};
+
+	ibm,opal {
+		power-mgt {
+			ibm,enabled-stop-levels = < 0x0 >; 
+		};
+	};
+
+	xscom@607fc00000000 {
+		compatible = "ibm,xscom", "ibm,power9-xscom";
+		ibm,chip-id = < 0x1 >;
+		#size-cells = < 1 >;
+		#address-cells = < 1 >;
+		reg = < 0x607fc 0x00000000 0x8 0x0 >;
+
+		xive@5013400 {
+			reg = <0x5013000 0x300>;
+			compatible = "ibm,power9-xive-x";
+		};
+
+		nx@2010000 {
+			reg = <0x2010000 0x4000>;
+			compatible = "ibm,power9-nx";
+		};
+
+		chiptod@40000 {
+			reg = <0x40000 0x34>;
+			compatible = "ibm,power-chiptod", "ibm,power9-chiptod";
+		};
+	};
+
+
+	awan { };
+};
+
